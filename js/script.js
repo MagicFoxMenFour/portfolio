@@ -29,9 +29,7 @@ const nav = document.getElementById('main-nav');
 const navToggle = document.querySelector('.nav-toggle');
 
 if (nav && navToggle) {
-    // Логика для десктопного скролла
     window.addEventListener('scroll', () => {
-        // Эта логика будет работать только на экранах шире 768px из-за CSS
         if (window.scrollY > 50) {
             nav.classList.add('scrolled');
         } else {
@@ -39,19 +37,44 @@ if (nav && navToggle) {
         }
     });
 
-    // Логика для клика по бургеру на мобильных устройствах
     navToggle.addEventListener('click', (e) => {
-        e.stopPropagation(); // Предотвращаем закрытие меню при клике на саму кнопку
+        e.stopPropagation();
         nav.classList.toggle('mobile-open');
     });
     
-    // Закрытие мобильного меню при клике вне его
     document.addEventListener('click', (e) => {
         if (window.innerWidth <= 768 && nav.classList.contains('mobile-open')) {
-            // Проверяем, что клик был не внутри nav
             if (!nav.contains(e.target)) {
                 nav.classList.remove('mobile-open');
             }
         }
     });
 }
+
+// === НОВОЕ: ПОДСВЕТКА АКТИВНОЙ ССЫЛКИ ===
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-links a");
+
+const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Удаляем класс active у всех ссылок
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            // Находим ссылку, которая ведет на эту секцию
+            const id = entry.target.getAttribute('id');
+            // Ищем ссылку с href="#id"
+            const activeLink = document.querySelector(`.nav-links a[href="#${id}"]`);
+            
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+    });
+}, { 
+    threshold: 0.3 // Срабатывает, когда 30% секции видно на экране
+});
+
+sections.forEach(section => {
+    navObserver.observe(section);
+});
