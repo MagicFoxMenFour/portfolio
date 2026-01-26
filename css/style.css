@@ -4,7 +4,7 @@ html, body {
     margin: 0; 
     padding: 0; 
     box-sizing: border-box; 
-    background-color: #ffffff; 
+  
     color: #111; 
     font-family: "Switzer", "Inter", sans-serif; 
     -webkit-font-smoothing: antialiased; 
@@ -422,4 +422,33 @@ footer { background-color: #111; color: #fff; padding: 64px 44px 32px; text-alig
         padding: 16px 0;
         margin-bottom: 40px;
     }
+}
+
+/* === ФОНОВЫЕ ТОЧКИ (CANVAS) === */
+#dotsCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Убираем на самый задний план */
+    background-color: #ffffff; /* Цвет фона сайта */
+    pointer-events: none; /* Чтобы клики проходили сквозь точки */
+}
+
+section, nav, footer {
+    position: relative;
+    z-index: 1; 
+}
+
+#grainCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999; /* Поверх всего */
+    pointer-events: none;
+    opacity: 0.05; /* Прозрачность шума (0.05 - еле заметно, 0.1 - сильно) */
+    mix-blend-mode: overlay; /* Режим наложения */
 }
