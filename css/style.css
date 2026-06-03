@@ -2,9 +2,8 @@
 :root {
     --bg-color: #050505;
     --text-color: #e0e0e0;
-    --accent-color: #ff0000; /* Цвет записи REC */
+    --accent-color: #ff0000;
     --border-color: #333;
-    --grid-gap: 1px;
     --font-mono: 'Space Mono', monospace;
     --font-display: 'Syne', sans-serif;
 }
@@ -29,6 +28,25 @@ a { color: inherit; text-decoration: none; text-transform: uppercase; }
 ul { list-style: none; padding: 0; }
 img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
+/* Скрытый элемент для скринридеров (visually hidden) */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ДОСТУПНОСТЬ: Фокус для клавиатурной навигации */
+:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 3px;
+}
+
 /* ЗЕРНО (Canvas) */
 #grainCanvas {
     position: fixed;
@@ -36,7 +54,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
     width: 100%; height: 100%;
     z-index: 9999;
     pointer-events: none;
-    opacity: 0.08; /* Сильнее чем раньше */
+    opacity: 0.08;
     mix-blend-mode: overlay;
 }
 
@@ -50,7 +68,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
     font-size: 12px;
     letter-spacing: 1px;
     z-index: 100;
-    mix-blend-mode: difference; /* Чтобы читалось на любом фоне */
+    mix-blend-mode: difference;
     pointer-events: none;
 }
 .rec-dot {
@@ -63,35 +81,13 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 }
 @keyframes blink { 50% { opacity: 0; } }
 
-.nav-contact-btn {
-    background: var(--text-color);
-    color: var(--bg-color) !important;
-    padding: 0 5px;
-}
-.nav-contact-btn:hover {
-    background: var(--accent-color);
-    color: #fff !important;
-}
-
-/* === TV SCREEN & CHANNELS === */
-
-/* Переделываем сетку под ТВ формат */
-.grid-container {
-    display: grid;
-    /* Левая часть (ТВ) широкая, правая (Пульт) узкая */
-    grid-template-columns: 3fr 1fr; 
-    gap: 0; /* Убираем отступы для цельности, или оставляем 20px */
-    border: 1px solid var(--border-color);
-    background: #000;
-}
-
 /* === FULLSCREEN INTERACTIVE TV === */
 .interactive-hero {
     position: relative;
     width: 100vw;
-    height: 100vh; /* На весь экран */
+    height: 100vh;
     overflow: hidden;
-    cursor: crosshair; /* Курсор-прицел для атмосферы */
+    cursor: crosshair;
     background: #000;
 }
 
@@ -99,21 +95,13 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.85; /* Легкое затемнение */
-    filter: contrast(1.1) saturate(1.2); /* Чуть более киношный цвет */
+    opacity: 0.85;
+    filter: contrast(1.1) saturate(1.2);
 }
 
-/* Выравниваем заголовок и кнопку в одну линию */
-.title-and-sound {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-top: 10px;
-}
-
-/* Применяем новый шрифт */
+/* Применяем шрифт */
 .pixel-text, #huge-channel-num {
-    font-family: 'Silkscreen', cursive; /* Новый шрифт */
+    font-family: 'Silkscreen', cursive;
     color: #fff;
     text-transform: uppercase;
     text-shadow: 3px 3px 0px #000;
@@ -129,11 +117,16 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
     color: #fff;
     text-shadow: 10px 10px 0px rgba(0,0,0,0.5);
     pointer-events: none;
-    z-index: 1000; /* ИЗМЕНЕНО: Сделали индекс больше, чтобы он был поверх scanlines и static */
+    z-index: 1000;
 }
 
 #tv-title {
-    font-size: 42px;
+    font-family: var(--font-display);
+    font-size: 4vw;
+    line-height: 0.9;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(0,0,0,0.8);
     margin: 0;
     letter-spacing: 1px;
 }
@@ -147,7 +140,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 10px; /* Увеличенная зона клика */
+    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -156,8 +149,8 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
     filter: drop-shadow(3px 3px 0px #000);
 }
 
-#mute-btn:hover { 
-    color: var(--accent-color); 
+#mute-btn:hover {
+    color: var(--accent-color);
     transform: scale(1.1);
 }
 
@@ -189,203 +182,9 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
-    background-size: 100% 4px; /* Полоски каждые 4 пикселя */
+    background-size: 100% 4px;
     z-index: 6;
     pointer-events: none;
-}
-
-/* Адаптив для мобилок */
-@media (max-width: 768px) {
-    #huge-channel-num { font-size: 40vw; }
-    #tv-title { font-size: 28px; }
-}
-
-#tv-title {
-    font-family: var(--font-display);
-    font-size: 4vw; /* Крупный заголовок */
-    line-height: 0.9;
-    color: #fff;
-    text-transform: uppercase;
-    text-shadow: 0 0 10px rgba(0,0,0,0.8);
-}
-
-#tv-desc {
-    font-size: 14px;
-    color: #ccc;
-    background: #000;
-    display: inline-block;
-    padding: 2px 5px;
-    margin-top: 10px;
-}
-
-.tv-meta {
-    text-align: right;
-    font-family: var(--font-mono);
-}
-#tv-ch {
-    display: block;
-    font-size: 24px;
-    font-weight: bold;
-}
-.live-badge {
-    color: var(--accent-color);
-    animation: blink 2s infinite;
-}
-
-/* === ЭФФЕКТ БЕЛОГО ШУМА (STATIC NOISE) === */
-.tv-static {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url('https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif'); /* Гифка шума */
-    background-size: cover;
-    opacity: 0; /* Скрыт по умолчанию */
-    pointer-events: none;
-    mix-blend-mode: hard-light;
-    z-index: 5;
-    transition: opacity 0.1s;
-}
-/* Класс для активации шума через JS */
-.tv-static.active {
-    opacity: 1;
-}
-
-/* === ПУЛЬТ УПРАВЛЕНИЯ === */
-.control-panel {
-    grid-column: 2 / 3;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background: #0a0a0a;
-}
-.panel-header {
-    border-bottom: 1px solid #333;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    color: #555;
-    font-size: 12px;
-}
-.channel-grid {
-    display: grid;
-    /* Делаем сетку 3 колонки */
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-}
-.ch-btn {
-    background: transparent;
-    border: 1px solid #333;
-    color: #555;
-    padding: 20px 0;
-    font-family: var(--font-mono);
-    font-size: 18px;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-.ch-btn:hover {
-    border-color: #fff;
-    color: #fff;
-}
-.ch-btn.active {
-    background: var(--accent-color);
-    color: #fff;
-    border-color: var(--accent-color);
-    box-shadow: 0 0 15px var(--accent-color);
-}
-
-.panel-info {
-    font-size: 12px;
-    color: #666;
-    margin-top: auto;
-    padding-top: 20px;
-}
-#mute-btn {
-    background: none; border: none; color: inherit; cursor: pointer; text-decoration: underline;
-}
-.green-text { color: #0f0; }
-
-/* АДАПТИВ */
-@media (max-width: 900px) {
-    .grid-container {
-        grid-template-columns: 1fr;
-    }
-    .tv-container {
-        aspect-ratio: 4/3; /* На мобилках чуть квадратнее */
-    }
-    .channel-grid {
-        grid-template-columns: repeat(4, 1fr); /* Кнопки в ряд */
-    }
-}
-
-/* Title Box */
-.title-box {
-    grid-column: 1 / 3;
-    border: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-h1 {
-    font-family: var(--font-display);
-    font-size: 9vw;
-    line-height: 0.85;
-    margin: 0;
-    text-transform: uppercase;
-    color: var(--text-color);
-}
-.subtitle {
-    margin-top: 20px;
-    font-size: 14px;
-    border-top: 1px solid var(--text-color);
-    display: inline-block;
-    padding-top: 10px;
-}
-
-/* Images */
-.img-box {
-    padding: 0;
-    overflow: hidden;
-    filter: grayscale(100%) contrast(120%);
-    transition: all 0.5s ease;
-}
-.img-box:hover {
-    filter: grayscale(0%);
-}
-.overlay-code {
-    position: absolute;
-    bottom: 5px; right: 5px;
-    background: #000;
-    color: #fff;
-    font-size: 10px;
-    padding: 2px 4px;
-}
-
-.hero-img-1 {
-    grid-column: 3 / 4;
-    grid-row: 1 / 3;
-    aspect-ratio: 9/16;
-}
-.hero-img-2 {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    aspect-ratio: 1;
-}
-
-/* Desc Box */
-.desc-box {
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    font-size: 16px;
-}
-.meta-data {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-    font-size: 10px;
-    opacity: 0.6;
 }
 
 /* === MARQUEE === */
@@ -412,6 +211,12 @@ h1 {
     100% { transform: translateX(-50%); }
 }
 
+/* Пауза анимации при prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    .marquee-content { animation: none; }
+    .rec-dot { animation: none; }
+}
+
 /* === PROJECTS === */
 #projects {
     padding: 60px 20px;
@@ -436,7 +241,7 @@ h1 {
 }
 .project-item {
     display: block;
-    grid: relative;
+    position: relative;
 }
 .project-preview {
     position: relative;
@@ -452,40 +257,30 @@ h1 {
     filter: grayscale(0%);
     transform: scale(1.05);
 }
-/* === ОБНОВЛЕННАЯ КНОПКА PLAY_RAW === */
 .play-icon {
     position: absolute;
-    top: 50%; 
+    top: 50%;
     left: 50%;
-    /* Кнопка изначально чуть уменьшена для красивой анимации */
     transform: translate(-50%, -50%) scale(0.9);
-    
-    font-size: 13px; /* Делаем текст более аккуратным */
+    font-size: 13px;
     font-family: 'Space Mono', monospace;
-    color: #ffffff; /* Белый текст, он легче воспринимается */
-    
-    /* Секрет крутого интерфейса: полупрозрачность + размытие */
-    background: rgba(0, 0, 0, 0.4); 
-    backdrop-filter: blur(4px); /* Эффект стекла: картинка под кнопкой будет размыта, но видна */
-    
-    border: 1px solid rgba(255, 255, 255, 0.15); /* Очень тонкая светлая рамка */
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     padding: 10px 24px;
     opacity: 0;
     transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
     letter-spacing: 2px;
     white-space: nowrap;
 }
-
-/* Красим только значок "▶" в красный цвет, не трогая остальной текст (чистый CSS-трюк) */
 .play-icon::first-letter {
     color: #ff0000;
 }
-
-/* Анимация при наведении: кнопка плавно увеличивается и появляется */
 .project-item:hover .play-icon {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Легкая тень для объема */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 .project-info {
     margin-top: 10px;
@@ -504,115 +299,9 @@ h1 {
     color: #666;
 }
 
-/* === SKILLS (TERMINAL) === */
-#skills {
-    padding: 60px 20px;
-    background: #0f0f0f;
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-}
-
-.dot { width: 10px; height: 10px; border-radius: 50%; display: block; }
-.red { background: #ff5f56; }
-.yellow { background: #ffbd2e; }
-.green { background: #27c93f; }
-.title { margin-left: 10px; font-size: 12px; color: #999; }
-.raw-list li { margin-bottom: 5px; }
-
-/* === ABOUT (PAPER) === */
-#about {
-    padding: 80px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-.paper-layout {
-    display: flex;
-    gap: 40px;
-    align-items: center;
-}
-.paper-img {
-    flex: 1;
-    border: 5px solid #fff;
-    transform: rotate(-2deg);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-.paper-text {
-    flex: 1.5;
-}
-.paper-text h2 {
-    font-family: var(--font-display);
-    font-size: 60px;
-    margin-bottom: 20px;
-    line-height: 1;
-}
-.achievements-box {
-    margin-top: 30px;
-    border: 1px solid var(--border-color);
-    padding: 20px;
-    background: #111;
-}
-
-/* === FOOTER === */
-footer {
-    padding: 80px 20px;
-    border-top: 2px solid var(--text-color);
-}
-.footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 40px;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-.footer-cta h2 {
-    font-family: var(--font-display);
-    font-size: 80px;
-    line-height: 0.9;
-    margin-bottom: 20px;
-}
-.big-link {
-    font-size: 24px;
-    border-bottom: 2px solid var(--accent-color);
-}
-.footer-socials {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
-    justify-content: center;
-}
-.footer-socials a {
-    font-size: 20px;
-}
-.footer-socials a:hover::before {
-    content: '> ';
-    color: var(--accent-color);
-}
-.footer-copy {
-    grid-column: 1 / -1;
-    margin-top: 60px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 10px;
-    opacity: 0.5;
-}
-
-/* === MOBILE === */
-@media (max-width: 768px) {
-    .grid-container {
-        display: flex;
-        flex-direction: column;
-    }
-    h1 { font-size: 60px; }
-    .hero-img-1 { aspect-ratio: 16/9; }
-    .paper-layout { flex-direction: column; }
-    .footer-cta h2 { font-size: 50px; }
-    .footer-grid { grid-template-columns: 1fr; }
-}
-
-/* === УСЛУГИ / TOOLBOX (Светлый брутализм) === */
+/* === SKILLS / TOOLBOX (Светлый брутализм) === */
 .brutal-section-light {
-    background-color: #f4f4f4; /* Светло-серый, газетный фон */
+    background-color: #f4f4f4;
     color: #111;
     padding: 100px 20px;
     border-top: 2px solid #111;
@@ -633,14 +322,14 @@ footer {
     text-transform: uppercase;
     letter-spacing: -1px;
     margin-bottom: 40px;
-    color: #ffffff; /* ПРИНУДИТЕЛЬНО БЕЛЫЙ ЦВЕТ */
+    color: #111;
 }
 
 .mono-label {
     font-family: 'Space Mono', monospace;
     font-weight: 700;
     margin-bottom: 15px;
-    color: #cccccc; /* СВЕТЛО-СЕРЫЙ ЦВЕТ */
+    color: #444;
 }
 
 .software-tags {
@@ -656,10 +345,9 @@ footer {
     border: 1px solid #111;
     background: #fff;
     text-transform: uppercase;
-    box-shadow: 3px 3px 0px #111; /* Жесткая тень в стиле брутализма */
+    box-shadow: 3px 3px 0px #111;
 }
 
-/* Правая колонка: Список */
 .services-list {
     display: flex;
     flex-direction: column;
@@ -743,6 +431,84 @@ footer {
     line-height: 1.5;
 }
 
+/* === ABOUT (Газетная верстка) === */
+#about {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.paper-layout {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+.paper-img {
+    flex: 1;
+    border: 5px solid #fff;
+    transform: rotate(-2deg);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.paper-text {
+    flex: 1.5;
+}
+.paper-text h2 {
+    font-family: var(--font-display);
+    font-size: 60px;
+    margin-bottom: 20px;
+    line-height: 1;
+}
+.achievements-box {
+    margin-top: 30px;
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    background: #111;
+}
+
+/* === FOOTER === */
+footer {
+    padding: 80px 20px;
+    border-top: 2px solid var(--text-color);
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+.footer-cta h2 {
+    font-family: var(--font-display);
+    font-size: 80px;
+    line-height: 0.9;
+    margin-bottom: 20px;
+}
+.big-link {
+    font-size: 24px;
+    border-bottom: 2px solid var(--accent-color);
+}
+.footer-socials {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    justify-content: center;
+}
+.footer-socials a {
+    font-size: 20px;
+}
+.footer-socials a:hover::before {
+    content: '> ';
+    color: var(--accent-color);
+}
+.footer-copy {
+    grid-column: 1 / -1;
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    opacity: 0.5;
+}
+
 /* === ТАЙМЛАЙН-СКРОЛЛБАР === */
 #timeline-container {
     position: fixed;
@@ -751,19 +517,17 @@ footer {
     width: 100%;
     height: 12px;
     background: #111;
-    z-index: 99999; /* Поверх всего сайта */
+    z-index: 99999;
     border-bottom: 1px solid #333;
-    pointer-events: none; /* Чтобы не мешал кликать */
+    pointer-events: none;
 }
 
-/* Деления на таймлайне (секунды) */
 .timeline-ticks {
     width: 100%;
     height: 100%;
     background-image: repeating-linear-gradient(to right, transparent, transparent 49px, #555 49px, #555 50px);
 }
 
-/* Красный ползунок (Playhead) */
 #timeline-playhead {
     position: absolute;
     top: 0;
@@ -775,7 +539,6 @@ footer {
     transition: left 0.1s ease-out;
 }
 
-/* Треугольник ползунка */
 #timeline-playhead::after {
     content: '';
     position: absolute;
@@ -788,26 +551,25 @@ footer {
     border-top: 8px solid #ff0000;
 }
 
+/* === МОБИЛЬНАЯ АДАПТАЦИЯ === */
 @media (max-width: 768px) {
-    /* 1. Запрещаем всему сайту скроллиться вбок */
     html, body {
         overflow-x: hidden;
-        width: 100vw;
-        max-width: 100%;
     }
 
-    /* 2. Исправляем верхнюю HUD панель */
     .hud-header {
         font-size: 10px;
         padding: 10px 15px;
     }
     .hud-center {
-        display: none; /* На телефоне прячем центр, чтобы краям было место */
+        display: none;
     }
 
-    /* 4. Кнопку звука отодвигаем от меню, чтобы не было "каши" */
+    #huge-channel-num { font-size: 40vw; }
+    #tv-title { font-size: 28px; }
+
     #mute-btn {
-        top: 100px; /* Опускаем под меню */
+        top: 100px;
         right: 15px;
     }
     #mute-btn svg {
@@ -815,39 +577,43 @@ footer {
         height: 32px;
     }
 
-    /* 5. Гигантский текст (THE_OPERATOR) делаем адаптивным */
     .paper-text h2 {
-        font-size: 12vw; /* Размер текста теперь зависит от ширины экрана */
+        font-size: 12vw;
         line-height: 1;
-        word-break: break-word; /* Разрешаем перенос длинных слов */
+        word-break: break-word;
         margin-bottom: 15px;
     }
-
-    /* Подправляем сетку секции "Архив" */
     .paper-layout {
         flex-direction: column;
         gap: 20px;
     }
 
-    /* 6. Адаптируем заголовок в подвале (LET'S SHOOT) */
     .footer-cta h2 {
         font-size: 15vw;
         word-break: break-word;
     }
+    .footer-grid { grid-template-columns: 1fr; }
 
-    /* 7. Бегущая строка - делаем шрифт чуть меньше для мобилок */
     .tape-strip {
         font-size: 16px;
         padding: 8px 0;
         margin: 30px 0;
     }
-    
-    /* Ограничиваем отступы у всех секций, чтобы они не вылезали за края */
-    #about, #skills, #projects, footer {
+
+    #about, footer {
         padding-left: 15px;
         padding-right: 15px;
         box-sizing: border-box;
     }
+    #skills {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    #projects {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
     .skills-grid, .faq-board {
         grid-template-columns: 1fr;
         gap: 40px;

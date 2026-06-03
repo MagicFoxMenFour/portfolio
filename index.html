@@ -3,65 +3,78 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K.POPOV | DIRECTORY</title>
-    <meta name="description" content="Портфолио видеокреатора Константина Попова. MediaSetters 2026.">
+    <title>K.POPOV | Видеокреатор — Монтаж, Режиссура, Motion Design</title>
+    <meta name="description" content="Портфолио видеокреатора Константина Попова. Кинематография, монтаж, цветокоррекция, 3D и моушн-дизайн. MediaSetters 2026.">
+    <link rel="canonical" href="https://k-popov.ru/">
     <link href="images/favicon-bw.jpg" rel="icon">
-    <link rel="stylesheet" href="css/style.css">
-    
-    <!-- Подключаем брутальные шрифты -->
-    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="K.POPOV | Видеокреатор">
+    <meta property="og:description" content="Портфолио видеокреатора Константина Попова. Кинематография, монтаж, цветокоррекция, 3D и моушн-дизайн.">
+    <meta property="og:image" content="images/about-portrait.jpg">
+    <meta property="og:locale" content="ru_RU">
+
+    <!-- Шрифты: preconnect ПЕРЕД stylesheet для скорости -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+<!-- Скрытый h1 для SEO и скринридеров -->
+<h1 class="visually-hidden">Константин Попов — видеокреатор, режиссёр, монтажёр</h1>
+
 <!-- ТАЙМЛАЙН ПРОКРУТКИ (Timeline Scrollbar) -->
-<div id="timeline-container">
+<div id="timeline-container" role="progressbar" aria-label="Прогресс прокрутки страницы" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
     <div class="timeline-ticks"></div>
     <div id="timeline-playhead"></div>
 </div>
 
 <!-- Эффект зерна (шума) на весь экран -->
-<canvas id="grainCanvas"></canvas>
+<canvas id="grainCanvas" aria-hidden="true"></canvas>
 
 <!-- Верхний интерфейс (HUD) -->
 <header class="hud-header">
     <div class="hud-left">
-        <span class="rec-dot"></span> REC
+        <span class="rec-dot" aria-hidden="true"></span> REC
     </div>
     <div class="hud-center">
         KONSTANTIN POPOV ©2026
     </div>
-    <div class="hud-right" id="timecode">
+    <div class="hud-right" id="timecode" aria-hidden="true">
         00:00:00:00
     </div>
 </header>
 
+<main>
+
 <!-- HERO SECTION: INTERACTIVE TV -->
-<section id="hero" class="interactive-hero">
+<section id="hero" class="interactive-hero" aria-label="Интерактивный видеоплеер — наведите мышь для смены канала">
     <!-- Видео плеер -->
-    <video id="main-video" class="tv-video" autoplay muted loop playsinline>
+    <video id="main-video" class="tv-video" autoplay muted loop playsinline preload="metadata">
         <source src="videos/vdohnovenie.mp4" type="video/mp4">
     </video>
 
     <!-- Слой "Белого шума" (помехи) -->
-    <div id="tv-static" class="tv-static active"></div>
+    <div id="tv-static" class="tv-static active" aria-hidden="true"></div>
 
     <!-- Эффект полос от старого телевизора (Scanlines) -->
-    <div class="scanlines"></div>
+    <div class="scanlines" aria-hidden="true"></div>
 
     <!-- Огромный номер канала (справа внизу) -->
-    <div id="huge-channel-num" class="pixel-text">01</div>
+    <div id="huge-channel-num" class="pixel-text" aria-hidden="true">01</div>
 
-    <!-- КНОПКА ЗВУКА (Теперь отдельный элемент для правого верхнего угла) -->
-    <button id="mute-btn" class="pixel-text" onclick="toggleMute()">
+    <!-- КНОПКА ЗВУКА -->
+    <button id="mute-btn" class="pixel-text" aria-label="Включить звук" aria-pressed="true">
         <!-- Иконка: Звук ВКЛ -->
-        <svg id="icon-vol-on" viewBox="0 0 24 24" fill="currentColor" width="40" height="40">
+        <svg id="icon-vol-on" viewBox="0 0 24 24" fill="currentColor" width="40" height="40" aria-hidden="true">
             <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
         </svg>
         <!-- Иконка: Звук ВЫКЛ (скрыта по умолчанию) -->
-        <svg id="icon-vol-off" viewBox="0 0 24 24" fill="currentColor" width="40" height="40" style="display:none;">
+        <svg id="icon-vol-off" viewBox="0 0 24 24" fill="currentColor" width="40" height="40" aria-hidden="true" style="display:none;">
             <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
         </svg>
     </button>
@@ -69,14 +82,14 @@
     <!-- Информационный оверлей (слева внизу) -->
     <div class="tv-info-overlay">
         <div class="tv-status">
-            <span class="rec-dot"></span> PLAY
+            <span class="rec-dot" aria-hidden="true"></span> PLAY
         </div>
         <h2 id="tv-title" class="pixel-text">INSPIRATION</h2>
     </div>
 </section>
 
 <!-- MARQUEE (Бегущая строка) -->
-<div class="tape-strip">
+<div class="tape-strip" aria-hidden="true">
     <div class="marquee-content">
         <span>/// DIRECTION /// EDITING /// COLOR GRADING /// 3D MOTION /// ART DIRECTION ///</span>
         <span>DIRECTION /// EDITING /// COLOR GRADING /// 3D MOTION /// ART DIRECTION ///</span>
@@ -84,20 +97,19 @@
 </div>
 
 <!-- PROJECTS (Сетка экранов) -->
-<section id="projects">
+<section id="projects" aria-label="Избранные работы">
     <div class="section-title">
         <h2>SELECTED_WORKS</h2>
         <div class="line"></div>
     </div>
-    
+
     <div class="projects-grid">
         <!-- 01 -->
-        <a href="https://vimeo.com/1132747852?fl=ip&fe=ec" target="_blank" class="project-item">
+        <a href="https://vimeo.com/1132747852?fl=ip&fe=ec" target="_blank" rel="noopener noreferrer" class="project-item">
             <div class="project-preview">
-                <!-- Заглушка (можешь потом нарезать скрины из видео и положить в папку images) -->
-                <img src="images/project-festival.jpg" alt="Project">
-                <div class="noise-overlay"></div>
-                <div class="play-icon">▶ PLAY_RAW</div>
+                <img src="images/project-festival.jpg" alt="Inspiration — Creative Reels, вертикальный формат" loading="lazy">
+                <div class="noise-overlay" aria-hidden="true"></div>
+                <div class="play-icon" aria-hidden="true">▶ PLAY_RAW</div>
             </div>
             <div class="project-info">
                 <h3>INSPIRATION</h3>
@@ -106,11 +118,11 @@
         </a>
 
         <!-- 02 -->
-        <a href="https://disk.yandex.ru/i/gFqhb-c538SKuQ" target="_blank" class="project-item">
+        <a href="https://disk.yandex.ru/i/gFqhb-c538SKuQ" target="_blank" rel="noopener noreferrer" class="project-item">
             <div class="project-preview">
-                <img src="images/tvoi-hod.png" alt="Project">
-                <div class="noise-overlay"></div>
-                <div class="play-icon">▶ PLAY_RAW</div>
+                <img src="images/tvoi-hod.png" alt="Твой Ход — событийный хайлайт видеоролик" loading="lazy">
+                <div class="noise-overlay" aria-hidden="true"></div>
+                <div class="play-icon" aria-hidden="true">▶ PLAY_RAW</div>
             </div>
             <div class="project-info">
                 <h3>TVOY KHOD</h3>
@@ -119,11 +131,11 @@
         </a>
 
         <!-- 03 -->
-        <a href="https://vimeo.com/1132750184?fl=ip&fe=ec" target="_blank" class="project-item">
+        <a href="https://vimeo.com/1132750184?fl=ip&fe=ec" target="_blank" rel="noopener noreferrer" class="project-item">
             <div class="project-preview">
-                <img src="images/sok-ncfu.png" alt="Project">
-                <div class="noise-overlay"></div>
-                <div class="play-icon">▶ PLAY_RAW</div>
+                <img src="images/sok-ncfu.png" alt="СОК СКФУ — промо-кампания университета" loading="lazy">
+                <div class="noise-overlay" aria-hidden="true"></div>
+                <div class="play-icon" aria-hidden="true">▶ PLAY_RAW</div>
             </div>
             <div class="project-info">
                 <h3>SOK SKFU</h3>
@@ -132,11 +144,11 @@
         </a>
 
         <!-- 04 -->
-        <a href="https://disk.yandex.ru/i/htJaSUiF781egg" target="_blank" class="project-item">
+        <a href="https://disk.yandex.ru/i/htJaSUiF781egg" target="_blank" rel="noopener noreferrer" class="project-item">
             <div class="project-preview">
-                <img src="images/ncfu-moscow.png" alt="Project">
-                <div class="noise-overlay"></div>
-                <div class="play-icon">▶ PLAY_RAW</div>
+                <img src="images/ncfu-moscow.png" alt="СКФУ Москва — документальный фильм" loading="lazy">
+                <div class="noise-overlay" aria-hidden="true"></div>
+                <div class="play-icon" aria-hidden="true">▶ PLAY_RAW</div>
             </div>
             <div class="project-info">
                 <h3>SKFU MOSCOW</h3>
@@ -145,11 +157,11 @@
         </a>
 
         <!-- 05 -->
-        <a href="https://vimeo.com/1132906354?fl=ip&fe=ec" target="_blank" class="project-item">
+        <a href="https://vimeo.com/1132906354?fl=ip&fe=ec" target="_blank" rel="noopener noreferrer" class="project-item">
             <div class="project-preview">
-                <img src="images/project-nos.jpg" alt="Project">
-                <div class="noise-overlay"></div>
-                <div class="play-icon">▶ PLAY_RAW</div>
+                <img src="images/project-nos.jpg" alt="ЛШИЗ Проект — репортажная съёмка" loading="lazy">
+                <div class="noise-overlay" aria-hidden="true"></div>
+                <div class="play-icon" aria-hidden="true">▶ PLAY_RAW</div>
             </div>
             <div class="project-info">
                 <h3>LSHZ PROJECT</h3>
@@ -158,11 +170,11 @@
         </a>
 
         <!-- 06 -->
-        <a href="https://disk.yandex.ru/i/LkaRqUsyP8PhNQ" target="_blank" class="project-item">
+        <a href="https://disk.yandex.ru/i/LkaRqUsyP8PhNQ" target="_blank" rel="noopener noreferrer" class="project-item">
             <div class="project-preview">
-                <img src="images/medoummedia.png" alt="Project">
-                <div class="noise-overlay"></div>
-                <div class="play-icon">▶ PLAY_RAW</div>
+                <img src="images/medoummedia.png" alt="Medium Media — рекламный коммерческий ролик" loading="lazy">
+                <div class="noise-overlay" aria-hidden="true"></div>
+                <div class="play-icon" aria-hidden="true">▶ PLAY_RAW</div>
             </div>
             <div class="project-info">
                 <h3>MEDIUM MEDIA</h3>
@@ -171,11 +183,11 @@
         </a>
 
         <!-- 07 -->
-        <a href="https://disk.yandex.ru/i/FhirYJHb1kzrAg" target="_blank" class="project-item">
+        <a href="https://disk.yandex.ru/i/FhirYJHb1kzrAg" target="_blank" rel="noopener noreferrer" class="project-item">
             <div class="project-preview">
-                <img src="images/motion-designe.png" alt="Project">
-                <div class="noise-overlay"></div>
-                <div class="play-icon">▶ PLAY_RAW</div>
+                <img src="images/motion-designe.png" alt="Motion Design — 3D графика и VFX в Blender" loading="lazy">
+                <div class="noise-overlay" aria-hidden="true"></div>
+                <div class="play-icon" aria-hidden="true">▶ PLAY_RAW</div>
             </div>
             <div class="project-info">
                 <h3>MOTION DESIGN</h3>
@@ -184,11 +196,11 @@
         </a>
 
         <!-- 08 -->
-        <a href="https://disk.yandex.ru/i/oV-xTsOIsPbHyQ" target="_blank" class="project-item">
+        <a href="https://disk.yandex.ru/i/oV-xTsOIsPbHyQ" target="_blank" rel="noopener noreferrer" class="project-item">
             <div class="project-preview">
-                <img src="images/mim.png" alt="Project">
-                <div class="noise-overlay"></div>
-                <div class="play-icon">▶ PLAY_RAW</div>
+                <img src="images/mim.png" alt="Концепция МИМ 2026 — арт-дирекшн и ролики" loading="lazy">
+                <div class="noise-overlay" aria-hidden="true"></div>
+                <div class="play-icon" aria-hidden="true">▶ PLAY_RAW</div>
             </div>
             <div class="project-info">
                 <h3>CONCEPT MIM 2026</h3>
@@ -197,14 +209,14 @@
         </a>
 
         <!-- 09 -->
-        <a href="https://disk.yandex.ru/d/SehM5TymqJLV5w" target="_blank" class="project-item">
+        <a href="https://disk.yandex.ru/d/SehM5TymqJLV5w" target="_blank" rel="noopener noreferrer" class="project-item">
             <div class="project-preview">
-                <img src="images/project-damage.jpg" alt="Project">
-                <div class="noise-overlay"></div>
-                <div class="play-icon">▶ PLAY_RAW</div>
+                <img src="images/project-damage.jpg" alt="Damage Club — съёмка ночной жизни" loading="lazy">
+                <div class="noise-overlay" aria-hidden="true"></div>
+                <div class="play-icon" aria-hidden="true">▶ PLAY_RAW</div>
             </div>
             <div class="project-info">
-                <h3>SMART</h3>
+                <h3>DAMAGE CLUB</h3>
                 <span>(NIGHTLIFE)</span>
             </div>
         </a>
@@ -212,7 +224,7 @@
 </section>
 
 <!-- SKILLS / TOOLBOX (Светлый брутализм) -->
-<section id="skills" class="brutal-section-light">
+<section id="skills" class="brutal-section-light" aria-label="Услуги и инструменты">
     <div class="skills-grid">
         <!-- Левая колонка (Заголовок и программы) -->
         <div class="skills-info">
@@ -222,10 +234,11 @@
                 ФОРМИРУЮТ<br>
                 ИСТОРИЮ.
             </h2>
-            
+
             <div class="software-block">
                 <p class="mono-label">/// MY_CREATIVE_TOOLBOX</p>
                 <div class="software-tags">
+                    <span>UNREAL_ENGINE_5</span>
                     <span>PHOTOSHOP</span>
                     <span>DAVINCI_RESOLVE</span>
                     <span>BLENDER_3D</span>
@@ -236,27 +249,27 @@
         <!-- Правая колонка (Список услуг) -->
         <div class="services-list">
             <div class="service-row">
-                <span class="sv-num">01</span>
+                <span class="sv-num" aria-hidden="true">01</span>
                 <h3>КИНЕМАТОГРАФИЯ / РЕЖИССУРА</h3>
             </div>
             <div class="service-row">
-                <span class="sv-num">02</span>
+                <span class="sv-num" aria-hidden="true">02</span>
                 <h3>КРЕАТИВНОЕ НАПРАВЛЕНИЕ И ПЛАНИРОВАНИЕ СЪЕМОК</h3>
             </div>
             <div class="service-row">
-                <span class="sv-num">03</span>
+                <span class="sv-num" aria-hidden="true">03</span>
                 <h3>ВИДЕОМОНТАЖ И МОУШН-ДИЗАЙН</h3>
             </div>
             <div class="service-row">
-                <span class="sv-num">04</span>
+                <span class="sv-num" aria-hidden="true">04</span>
                 <h3>ЦВЕТОКОРРЕКЦИЯ И СОЗДАНИЕ СТИЛЯ</h3>
             </div>
             <div class="service-row">
-                <span class="sv-num">05</span>
+                <span class="sv-num" aria-hidden="true">05</span>
                 <h3>ФОТОГРАФИЯ И РЕТУШЬ</h3>
             </div>
             <div class="service-row">
-                <span class="sv-num">06</span>
+                <span class="sv-num" aria-hidden="true">06</span>
                 <h3>3D ГРАФИКА</h3>
             </div>
         </div>
@@ -264,44 +277,44 @@
 </section>
 
 <!-- FAQ SECTION (В стиле раскадровки / режиссерских заметок) -->
-<section id="faq" class="brutal-section-dark">
+<section id="faq" class="brutal-section-dark" aria-label="Часто задаваемые вопросы">
     <div class="section-title">
-        <h2>Q_&_A // FAQ</h2>
+        <h2>Q_&amp;_A // FAQ</h2>
         <div class="line"></div>
     </div>
-    
+
     <div class="faq-board">
         <div class="faq-card">
-            <div class="q-mark">Q_01</div>
+            <div class="q-mark" aria-hidden="true">Q_01</div>
             <h3>На каких типах проектов вы специализируетесь?</h3>
             <p>В основном я занимаюсь креативным направлением, производством кинематографического видео, фотографией и созданием коротких видеороликов (Reels/Shorts).</p>
         </div>
 
         <div class="faq-card">
-            <div class="q-mark">Q_02</div>
+            <div class="q-mark" aria-hidden="true">Q_02</div>
             <h3>Насколько вы вовлечены в творческий процесс?</h3>
             <p>Я полностью погружаюсь в процесс: от разработки идеи и сценария до финального монтажа и саунд-дизайна. Вы получаете проект "под ключ".</p>
         </div>
 
         <div class="faq-card">
-            <div class="q-mark">Q_03</div>
+            <div class="q-mark" aria-hidden="true">Q_03</div>
             <h3>Вы беретесь за небольшие проекты?</h3>
             <p>Да, конечно! Я работаю как с крупными брендами, так и с личными блогами. Для меня главное — интересная творческая задача, а не бюджет корпорации.</p>
         </div>
 
         <div class="faq-card">
-            <div class="q-mark">Q_04</div>
+            <div class="q-mark" aria-hidden="true">Q_04</div>
             <h3>Сколько времени занимает монтаж?</h3>
-            <p>Зависит от сложности задачи. Reels — 1-2 дня. Полноценный рекламный ролик — от 2 до 10 дней.</p>
+            <p>Зависит от сложности исходников и графики. Reels — 1-2 дня. Полноценный рекламный ролик — от 5 до 14 дней.</p>
         </div>
     </div>
 </section>
 
 <!-- ABOUT (Газетная верстка) -->
-<section id="about">
+<section id="about" aria-label="О себе">
     <div class="paper-layout">
         <div class="paper-img">
-            <img src="images/about-portrait.jpg" alt="Portrait">
+            <img src="images/about-portrait.jpg" alt="Константин Попов — видеокреатор и режиссёр">
         </div>
         <div class="paper-text">
             <h2>THE_OPERATOR</h2>
@@ -311,16 +324,16 @@
             <div class="achievements-box">
                 <h4>ACHIEVEMENTS_LOG:</h4>
                 <ul>
-                    <li>★ Видеокреатор года (MediaSetters '25 - призер)</li>
+                    <li>★ Видеокреатор года (MediaSetters '26)</li>
                     <li>★ Видеограф форума «Машук»</li>
-                    <li>★ Победитель всероссийской Летней школы Журналистики по видео</li>
                     <li>★ Победитель «Фестиваля творцов»</li>
-                    <li>★ Видеограф Всероссийских проектов: Российская школьная весна, Молодые лица страны, Петербуржский международный экономический форум</li>
                 </ul>
             </div>
         </div>
     </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer id="contact">
@@ -330,8 +343,8 @@
             <a href="mailto:p0p0vk@yandex.ru" class="big-link">p0p0vk@yandex.ru</a>
         </div>
         <div class="footer-socials">
-            <a href="https://t.me/MagicfoxMenFour" target="_blank">TELEGRAM</a>
-            <a href="https://vk.com/magic_fox_men_four" target="_blank">VKONTAKTE</a>
+            <a href="https://t.me/MagicfoxMenFour" target="_blank" rel="noopener noreferrer">TELEGRAM</a>
+            <a href="https://vk.com/magic_fox_men_four" target="_blank" rel="noopener noreferrer">VKONTAKTE</a>
         </div>
         <div class="footer-copy">
             <span>© 2026 KONSTANTIN POPOV</span>

@@ -1,0 +1,114 @@
+{
+  "tvChannels": [
+    {
+      "id": 1,
+      "title": "INSPIRATION",
+      "src": "videos/vdohnovenie.mp4"
+    },
+    {
+      "id": 2,
+      "title": "TVOY KHOD",
+      "src": "videos/tvoy-hod1.mp4"
+    },
+    {
+      "id": 3,
+      "title": "SOK SKFU",
+      "src": "videos/sok-skfu.mp4"
+    },
+    {
+      "id": 4,
+      "title": "SKFU MOSCOW",
+      "src": "videos/NCFU-Moscow.mp4"
+    },
+    {
+      "id": 5,
+      "title": "LSHZ PROJECT",
+      "src": "videos/lshz-project.mp4"
+    },
+    {
+      "id": 6,
+      "title": "MEDIUM MEDIA",
+      "src": "videos/mediummedia.mp4"
+    },
+    {
+      "id": 7,
+      "title": "MOTION DESIGN",
+      "src": "videos/motion.mp4"
+    },
+    {
+      "id": 8,
+      "title": "CONCEPT MIM 2026",
+      "src": "videos/concept_mim.mp4"
+    },
+    {
+      "id": 9,
+      "title": "DAMAGE CLUB",
+      "src": "videos/proj1.mp4"
+    }
+  ],
+  "selectedWorks": [
+    {
+      "title": "INSPIRATION",
+      "category": "(REELS / VERTICAL)",
+      "url": "https://vimeo.com/1132747852?fl=ip&fe=ec",
+      "image": "images/project-festival.jpg",
+      "alt": "Inspiration - Creative Reels, vertical format"
+    },
+    {
+      "title": "TVOY KHOD",
+      "category": "(EVENT HIGHLIGHT)",
+      "url": "https://disk.yandex.ru/i/gFqhb-c538SKuQ",
+      "image": "images/tvoi-hod.png",
+      "alt": "Tvoy Khod - event highlight video"
+    },
+    {
+      "title": "SOK SKFU",
+      "category": "(PROMO CAMPAIGN)",
+      "url": "https://vimeo.com/1132750184?fl=ip&fe=ec",
+      "image": "images/sok-ncfu.png",
+      "alt": "SOK SKFU - promo campaign"
+    },
+    {
+      "title": "SKFU MOSCOW",
+      "category": "(DOCUMENTARY)",
+      "url": "https://disk.yandex.ru/i/htJaSUiF781egg",
+      "image": "images/ncfu-moscow.png",
+      "alt": "SKFU Moscow - documentary"
+    },
+    {
+      "title": "LSHZ PROJECT",
+      "category": "(REPORTAGE)",
+      "url": "https://vimeo.com/1132906354?fl=ip&fe=ec",
+      "image": "images/project-nos.jpg",
+      "alt": "LSHZ Project - reportage"
+    },
+    {
+      "title": "MEDIUM MEDIA",
+      "category": "(COMMERCIAL AD)",
+      "url": "https://disk.yandex.ru/i/LkaRqUsyP8PhNQ",
+      "image": "images/medoummedia.png",
+      "alt": "Medium Media - commercial ad"
+    },
+    {
+      "title": "MOTION DESIGN",
+      "category": "(3D / VFX)",
+      "url": "https://disk.yandex.ru/i/FhirYJHb1kzrAg",
+      "image": "images/motion-designe.png",
+      "alt": "Motion Design - 3D and VFX"
+    },
+    {
+      "title": "CONCEPT MIM 2026",
+      "category": "(ART DIRECTION)",
+      "url": "https://disk.yandex.ru/i/oV-xTsOIsPbHyQ",
+      "image": "images/mim.png",
+      "alt": "Concept MIM 2026 - art direction"
+    },
+    {
+      "title": "DAMAGE CLUB",
+      "category": "(NIGHTLIFE)",
+      "url": "https://disk.yandex.ru/d/SehM5TymqJLV5w",
+      "image": "images/project-damage.jpg",
+      "alt": "Damage Club - nightlife shooting"
+    }
+  ]
+}
