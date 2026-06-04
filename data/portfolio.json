@@ -7,17 +7,17 @@
     },
     {
       "id": 2,
-      "title": "TVOY KHOD",
+      "title": "ТВОЙ ХОД",
       "src": "videos/tvoy-hod1.mp4"
     },
     {
       "id": 3,
-      "title": "SOK SKFU",
+      "title": "Концепт сока СКФУ",
       "src": "videos/sok-skfu.mp4"
     },
     {
       "id": 4,
-      "title": "SKFU MOSCOW",
+      "title": "NCFU MOSCOW",
       "src": "videos/NCFU-Moscow.mp4"
     },
     {
@@ -42,7 +42,7 @@
     },
     {
       "id": 9,
-      "title": "DAMAGE CLUB",
+      "title": "SMART - СМИ и АРТ",
       "src": "videos/proj1.mp4"
     }
   ],
@@ -55,29 +55,29 @@
       "alt": "Inspiration - Creative Reels, vertical format"
     },
     {
-      "title": "TVOY KHOD",
+      "title": "ТВОЙ ХОД",
       "category": "(EVENT HIGHLIGHT)",
       "url": "https://disk.yandex.ru/i/gFqhb-c538SKuQ",
       "image": "images/tvoi-hod.png",
       "alt": "Tvoy Khod - event highlight video"
     },
     {
-      "title": "SOK SKFU",
+      "title": "Концепт сока СКФУ",
       "category": "(PROMO CAMPAIGN)",
       "url": "https://vimeo.com/1132750184?fl=ip&fe=ec",
       "image": "images/sok-ncfu.png",
       "alt": "SOK SKFU - promo campaign"
     },
     {
-      "title": "SKFU MOSCOW",
-      "category": "(DOCUMENTARY)",
+      "title": "NCFU MOSCOW",
+      "category": "(JOURNEY)",
       "url": "https://disk.yandex.ru/i/htJaSUiF781egg",
       "image": "images/ncfu-moscow.png",
       "alt": "SKFU Moscow - documentary"
     },
     {
       "title": "LSHZ PROJECT",
-      "category": "(REPORTAGE)",
+      "category": "(EVENT HIGHLIGHT)",
       "url": "https://vimeo.com/1132906354?fl=ip&fe=ec",
       "image": "images/project-nos.jpg",
       "alt": "LSHZ Project - reportage"
@@ -91,10 +91,10 @@
     },
     {
       "title": "MOTION DESIGN",
-      "category": "(3D / VFX)",
+      "category": "(2D)",
       "url": "https://disk.yandex.ru/i/FhirYJHb1kzrAg",
       "image": "images/motion-designe.png",
-      "alt": "Motion Design - 3D and VFX"
+      "alt": "Motion Design - 2D and VFX"
     },
     {
       "title": "CONCEPT MIM 2026",
@@ -105,10 +105,17 @@
     },
     {
       "title": "DAMAGE CLUB",
-      "category": "(NIGHTLIFE)",
+      "category": "(COMMERCIAL AD)",
       "url": "https://disk.yandex.ru/d/SehM5TymqJLV5w",
       "image": "images/project-damage.jpg",
       "alt": "Damage Club - nightlife shooting"
+    },
+    {
+      "title": "KINOMAEVKA",
+      "category": "(JOURNEY)",
+      "url": "https://disk.yandex.ru/i/JlnunPGj4sca0A",
+      "image": "images/kinomaevka.jpg",
+      "alt": "KINO and journey"
     }
   ]
 }
