@@ -48,6 +48,41 @@
   ],
   "selectedWorks": [
     {
+      "title": "KINOMAEVKA",
+      "category": "(JOURNEY)",
+      "url": "https://disk.yandex.ru/i/JlnunPGj4sca0A",
+      "image": "images/kinomaevka.jpg",
+      "alt": "KINO and journey"
+    },
+    {
+      "title": "ARTERIES",
+      "category": "(EVENT INTERVIEW)",
+      "url": "https://disk.yandex.ru/i/yn_dil6zGkhXPg",
+      "image": "images/arteries.jpg",
+      "alt": "memories of past events"
+    },
+    {
+      "title": "MENTOR CORPS",
+      "category": "(WISHES)",
+      "url": "https://disk.yandex.ru/d/5bGLyda-5Di97Q",
+      "image": "images/mentor.jpg",
+      "alt": "Farewell to the mentor corps"
+    },
+    {
+      "title": "POKOLENIE",
+      "category": "(VIDEO DIARY)",
+      "url": "https://disk.yandex.ru/i/65nz3IF0ZRNLpQ",
+      "image": "images/pokolenie.jpg",
+      "alt": "Video diary of how the event was held"
+    },
+    {
+      "title": "STUDVESNA",
+      "category": "(PERFOTMANCE)",
+      "url": "https://disk.yandex.ru/i/5eEE8niKrQtCKQ",
+      "image": "images/studvesna.jpg",
+      "alt": "Performance at the Student Spring"
+    },
+    {
       "title": "INSPIRATION",
       "category": "(REELS / VERTICAL)",
       "url": "https://vimeo.com/1132747852?fl=ip&fe=ec",
@@ -109,13 +144,6 @@
       "url": "https://disk.yandex.ru/d/SehM5TymqJLV5w",
       "image": "images/project-damage.jpg",
       "alt": "Damage Club - nightlife shooting"
-    },
-    {
-      "title": "KINOMAEVKA",
-      "category": "(JOURNEY)",
-      "url": "https://disk.yandex.ru/i/JlnunPGj4sca0A",
-      "image": "images/kinomaevka.jpg",
-      "alt": "KINO and journey"
     }
   ]
 }
